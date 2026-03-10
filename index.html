@@ -1,127 +1,188 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resúmenes REAs secundaria - Código 4.0</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            margin: 0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REA de Acompañamiento - Código 4.0</title>
 
-        h1 {
-            color: #555;
-            text-align: center;
-            margin-bottom: 40px;
-        }
+<style>
 
-        .container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            width: 100%;
-        }
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin: 0;
+}
 
-        .curso-section {
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+h1 {
+    color: #555;
+    text-align: center;
+    margin-bottom: 40px;
+}
 
-        .curso-title {
-            font-weight: bold;
-            color: #777;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+}
 
-        .button-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+.curso-section {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
 
-        .btn {
-            display: block;
-            text-decoration: none;
-            color: white;
-            padding: 15px;
-            border-radius: 12px;
-            font-weight: 600;
-            text-align: center;
-            transition: transform 0.2s, opacity 0.2s;
-            font-size: 0.95rem;
-        }
+.curso-title {
+    font-weight: bold;
+    color: #777;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+    text-align: center;
+}
 
-        .btn:hover {
-            transform: translateY(-2px);
-            opacity: 0.9;
-        }
+.button-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 
-        /* Colores basados en la imagen */
-        .eso1 { background-color: #9b6dff; } /* Violeta */
-        .eso2 { background-color: #d15ce6; } /* Fucsia/Violeta claro */
-        .eso3 { background-color: #1da1f2; } /* Azul */
-        .eso4 { background-color: #26b1ba; } /* Turquesa/Azul verdoso */
+.btn {
+    display: block;
+    text-decoration: none;
+    color: white;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    text-align: center;
+    transition: transform 0.2s, opacity 0.2s;
+    font-size: 0.95rem;
+}
 
-    </style>
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.rea {
+    font-weight: normal;
+    font-size: 0.85rem;
+    opacity: 0.9;
+}
+
+.eso1 { background-color: #9b6dff; }
+.eso2 { background-color: #d15ce6; }
+.eso3 { background-color: #1da1f2; }
+.eso4 { background-color: #26b1ba; }
+
+</style>
 </head>
+
 <body>
 
-    <h1>RESÚMENES REA's SECUNDARIA</h1>
+<h1>RESÚMENES REA_s SECUNDARIA</h1>
 
-    <div class="container">
-        
-        <div class="curso-section">
-            <div class="curso-title">1º ESO</div>
-            <div class="button-grid">
-                <a href="link1" target="_blank" class="btn eso1">Lengua / Inglés / EPV</a>
-                <a href="link2" target="_blank" class="btn eso1">Matemáticas / EF / Música</a>
-                <a href="link3" target="_blank" class="btn eso1">ByG / GeH</a>
-            </div>
-        </div>
+<div class="container">
 
-        <div class="curso-section">
-            <div class="curso-title">2º ESO</div>
-            <div class="button-grid">
-                <a href="https://docs.google.com/document/d/1Aw_K0dxbQMW-aab1n6r8O8pJ8YFNPPJByaGbzYOc66c/edit?usp=sharing" target="_blank" class="btn eso2">Lengua / Inglés / GeH</a>
-                <a href="https://docs.google.com/spreadsheets/d/1ZkEAIvfvaHU9U0vniBuS5q9fKfu1H2XJWtiqAivMgZ0/edit?usp=sharing" target="_blank" class="btn eso2">FyQ / Matemáticas</a>
-                <a href="link6" target="_blank" class="btn eso2">EF / Música / Tecnología</a>
-            </div>
-        </div>
+<div class="curso-section">
+<div class="curso-title">1º ESO</div>
 
-        <div class="curso-section">
-            <div class="curso-title">3º ESO</div>
-            <div class="button-grid">
-                <a href="link7" target="_blank" class="btn eso3">ByG / FyQ / EF</a>
-                <a href="link8" target="_blank" class="btn eso3">Matemáticas / EPV / Tecnología</a>
-                <a href="https://docs.google.com/document/d/1-UbMWrw8J1pDEKW-tgIo9WV9LGuxzY6_/edit#heading=h.lpsbl39buob5" target="_blank" class="btn eso3">Lengua / Inglés / GeH</a>
-            </div>
-        </div>
+<div class="button-grid">
 
-        <div class="curso-section">
-            <div class="curso-title">4º ESO</div>
-            <div class="button-grid">
-                <a href="link10" target="_blank" class="btn eso4">Matemáticas B / FyQ / EF</a>
-                <a href="link11" target="_blank" class="btn eso4">Matemáticas A / FOPP</a>
-                <a href="link12" target="_blank" class="btn eso4">Lengua / Inglés / GeH</a>
-            </div>
-        </div>
+<a href="link1" target="_blank" class="btn eso1">
+Lengua / Inglés / EPV<br>
+<span class="rea">La supervivencia en Terra Nova</span>
+</a>
 
-    </div>
+<a href="link2" target="_blank" class="btn eso1">
+Matemáticas / EF / Música<br>
+<span class="rea">El Despertar de los Cadetes Stealth</span>
+</a>
+
+<a href="link3" target="_blank" class="btn eso1">
+ByG / GeH<br>
+<span class="rea">Comic-Tech. La rebelión del grafito</span>
+</a>
+
+</div>
+</div>
+
+<div class="curso-section">
+<div class="curso-title">2º ESO</div>
+
+<div class="button-grid">
+
+<a href="https://docs.google.com/document/d/1Aw_K0dxbQMW-aab1n6r8O8pJ8YFNPPJByaGbzYOc66c/edit?usp=sharing" target="_blank" class="btn eso2">
+Lengua / Inglés / GeH<br>
+<span class="rea">Sherpa-Bot. El Camino de la Plata 4.0</span>
+</a>
+
+<a href="https://docs.google.com/spreadsheets/d/1ZkEAIvfvaHU9U0vniBuS5q9fKfu1H2XJWtiqAivMgZ0/edit?usp=sharing" target="_blank" class="btn eso2">
+FyQ / Matemáticas<br>
+<span class="rea">Abyss-Zero. Protocolo de emergencia</span>
+</a>
+
+<a href="link6" target="_blank" class="btn eso2">
+EF / Música / Tecnología<br>
+<span class="rea">Sistema de Guiado Sport-Blind</span>
+</a>
+
+</div>
+</div>
+
+<div class="curso-section">
+<div class="curso-title">3º ESO</div>
+
+<div class="button-grid">
+
+<a href="link7" target="_blank" class="btn eso3">
+ByG / FyQ / EF<br>
+<span class="rea">Rescate en las Profundidades. Operación Cueva Oscura</span>
+</a>
+
+<a href="link8" target="_blank" class="btn eso3">
+Matemáticas / EPV / Tecnología<br>
+<span class="rea">Art-Tech Museum: El Renacimiento del Siglo XXI</span>
+</a>
+
+<a href="https://docs.google.com/document/d/1-UbMWrw8J1pDEKW-tgIo9WV9LGuxzY6_/edit#heading=h.lpsbl39buob5" target="_blank" class="btn eso3">
+Lengua / Inglés / GeH<br>
+<span class="rea">REA – Global Market: El Viaje de los Productos</span>
+</a>
+
+</div>
+</div>
+
+<div class="curso-section">
+<div class="curso-title">4º ESO</div>
+
+<div class="button-grid">
+
+<a href="link10" target="_blank" class="btn eso4">
+Matemáticas B / FyQ / EF<br>
+<span class="rea">Grand Prix 4.0: Escudería Física Extrema</span>
+</a>
+
+<a href="link11" target="_blank" class="btn eso4">
+Matemáticas A / FOPP<br>
+<span class="rea">Tech-Aid: Operación Última Milla</span>
+</a>
+
+<a href="link12" target="_blank" class="btn eso4">
+Lengua / Inglés / GeH<br>
+<span class="rea">Time Court: El Veredicto de la Historia</span>
+</a>
+
+</div>
+</div>
+
+</div>
 
 </body>
-
 </html>
