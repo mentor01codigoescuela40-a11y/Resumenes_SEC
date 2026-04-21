@@ -24,11 +24,21 @@
         .eso2 { background:#d15ce6; }
         .eso3 { background:#1da1f2; }
         .eso4 { background:#26b1ba; }
+
+        /* Estilos de la ventana emergente (Modal) */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); justify-content: center; align-items: center; z-index: 1000; }
+        .modal-overlay.active { display: flex; }
+        .modal-card { background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 350px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.2); animation: popIn 0.3s ease-out; }
+        .modal-card h2 { color: #555; margin-top: 0; font-size: 1.3rem; }
+        .modal-card p { color: #777; margin-bottom: 25px; line-height: 1.5; font-size: 0.95rem; }
+        .modal-btn { background-color: #1da1f2; color: white; border: none; padding: 10px 25px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.3s; }
+        .modal-btn:hover { background-color: #1a91da; }
+        @keyframes popIn { from { transform: scale(0.8); opacity: 0; } to { transform: scale(1); opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <h1>RESÚMENES SECUNDARIA</h1>
+    <h1>RESÚMENES SECUNDARIA.</h1>
 
     <div class="container">
 
@@ -154,6 +164,14 @@
 
     </div>
 
+    <div id="modalConstruccion" class="modal-overlay" onclick="cerrarModal()">
+        <div class="modal-card" onclick="event.stopPropagation()">
+            <h2>🚧 En construcción 🚧</h2>
+            <p>Los profesores todavía están preparando esta actividad. ¡Vuelve un poco más adelante!</p>
+            <button class="modal-btn" onclick="cerrarModal()">Entendido</button>
+        </div>
+    </div>
+
     <script>
         // Función para abrir/cerrar menús
         function toggleMenu(el){
@@ -163,42 +181,26 @@
             el.nextElementSibling.classList.toggle('active');
         }
 
-        // --- CONFIGURACIÓN DE PÁGINA "EN CONSTRUCCIÓN" ---
-        const htmlConstruccion = `
-            <!DOCTYPE html>
-            <html lang="es">
-            <head>
-                <meta charset="UTF-8">
-                <title>En Construcción</title>
-                <style>
-                    body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f7f6; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
-                    .card { background: white; padding: 40px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); max-width: 400px; }
-                    h1 { color: #555; font-size: 1.5rem; margin-bottom: 10px; }
-                    p { color: #777; margin-bottom: 25px; line-height: 1.5; }
-                    button { background-color: #1da1f2; color: white; border: none; padding: 12px 25px; border-radius: 8px; cursor: pointer; font-size: 1rem; font-weight: bold; transition: background 0.3s; }
-                    button:hover { background-color: #1a91da; }
-                </style>
-            </head>
-            <body>
-                <div class="card">
-                    <h1>🚧 Actividad en construcción 🚧</h1>
-                    <p>Los profesores todavía están preparando esta actividad. ¡Vuelve un poco más adelante!</p>
-                    <button onclick="window.close()">Cerrar pestaña</button>
-                </div>
-            </body>
-            </html>
-        `;
-        // Convertimos el HTML en una URL de datos legible por el navegador
-        const urlConstruccion = "data:text/html;charset=utf-8," + encodeURIComponent(htmlConstruccion);
+        // Funciones del Modal de construcción
+        function abrirModal() {
+            document.getElementById('modalConstruccion').classList.add('active');
+        }
+        function cerrarModal() {
+            document.getElementById('modalConstruccion').classList.remove('active');
+        }
 
-        // Asignamos la página de construcción a TODOS los botones pendientes por defecto
+        // Interceptar clics en los botones que aún no tienen enlace real
         document.querySelectorAll('.sub-btn').forEach(btn => {
             if (btn.id && btn.id.startsWith("Link")) {
-                btn.href = urlConstruccion;
-                btn.target = "_blank"; // Se abrirá en una pestaña nueva
+                btn.addEventListener('click', function(e) {
+                    // Si el enlace no empieza por http (es decir, sigue vacío), mostramos el aviso instantáneo
+                    if (!this.href.toLowerCase().startsWith('http')) {
+                        e.preventDefault(); // Evitamos que navegue a ninguna parte
+                        abrirModal();
+                    }
+                });
             }
         });
-
 
         // --- CONFIGURACIÓN DE GOOGLE SHEETS ---
         const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEY58bKCR8Te2gDvmmS9z-iEYsnAowh0l3tc4Jg2epp-t68w4jKUajy0rB6FRKFIvUAogd4Gkl8od/pub?gid=0&single=true&output=csv';
@@ -232,7 +234,7 @@
         async function cargarEnlacesDesdeGoogleSheets() {
             try {
                 const respuesta = await fetch(csvUrl, { cache: "no-store" });
-                if (!respuesta.ok) return; // Si falla, se quedan los enlaces de construcción
+                if (!respuesta.ok) return;
 
                 const textoCsv = await respuesta.text();
                 const filas = parseCSV(textoCsv);
@@ -250,9 +252,10 @@
                     const idBuscado = `Link${nRea.trim()}_${actividad.trim()}`;
                     const boton = document.getElementById(idBuscado);
 
-                    // Si existe el botón y hay un enlace REAL (empieza por http), sustituye la página de construcción
+                    // Si existe el botón y hay un enlace REAL, se lo asignamos
                     if (boton && enlace && enlace.toLowerCase().startsWith("http")) {
                         boton.href = enlace.trim();
+                        boton.target = "_blank"; // Aseguramos que los enlaces reales abran en pestaña nueva
                     }
                 }
             } catch (error) {
