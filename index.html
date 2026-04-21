@@ -1,264 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Resúmenes Secundaria</title>
-
-<style>
-body { font-family: 'Segoe UI', Tahoma; background-color: #f4f7f6; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
-h1 { color: #555; margin-bottom: 40px; }
-.container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; width: 100%; }
-.curso-section { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-.curso-title { text-align: center; margin-bottom: 15px; font-weight: bold; color: #777; }
-.button-grid { display: flex; flex-direction: column; gap: 10px; }
-.btn { color: white; padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; }
-.rea { font-size: 0.85rem; opacity: 0.9; }
-.submenu { display: none; flex-direction: column; gap: 5px; margin-top: 5px; }
-.submenu.active { display: flex; }
-.sub-btn { background: #ddd; color: #333; padding: 10px; border-radius: 8px; text-decoration: none; text-align: center; }
-.eso1 { background:#9b6dff; } .eso2 { background:#d15ce6; } .eso3 { background:#1da1f2; } .eso4 { background:#26b1ba; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resúmenes Secundaria</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #f4f7f6; display: flex; flex-direction: column; align-items: center; padding: 20px; margin: 0; }
+        h1 { color: #555; margin-bottom: 40px; }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; width: 100%; }
+        .curso-section { background: white; padding: 20px; border-radius: 15px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        .curso-title { text-align: center; margin-bottom: 15px; font-weight: bold; color: #777; }
+        .button-grid { display: flex; flex-direction: column; gap: 10px; }
+        .btn { color: white; padding: 15px; border-radius: 12px; text-align: center; cursor: pointer; transition: transform 0.2s; }
+        .btn:active { transform: scale(0.98); }
+        .rea { font-size: 0.85rem; opacity: 0.9; }
+        .submenu { display: none; flex-direction: column; gap: 5px; margin-top: 5px; }
+        .submenu.active { display: flex; }
+        .sub-btn { background: #ddd; color: #333; padding: 10px; border-radius: 8px; text-decoration: none; text-align: center; font-size: 0.9rem; }
+        .sub-btn:hover { background: #ccc; }
+        
+        /* Colores por curso */
+        .eso1 { background:#9b6dff; }
+        .eso2 { background:#d15ce6; }
+        .eso3 { background:#1da1f2; }
+        .eso4 { background:#26b1ba; }
+    </style>
 </head>
-
 <body>
 
-<h1>RESÚMENES SECUNDARIA</h1>
+    <h1>RESÚMENES SECUNDARIA.</h1>
 
-<script>
-function toggleMenu(el){
-    document.querySelectorAll('.submenu').forEach(m=> {
-        if(m!==el.nextElementSibling) m.classList.remove('active');
-    });
-    el.nextElementSibling.classList.toggle('active');
-}
-</script>
+    <div class="container">
 
-<div class="container">
+        <div class="curso-section">
+            <div class="curso-title">1º ESO</div>
+            <div class="button-grid">
+                <div>
+                    <div class="btn eso1" onclick="toggleMenu(this)">ByG / GeH<br><span class="rea">La supervivencia en Terra Nova</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1v4C6S9cPgPegzKQ6ZV23faIpB-wfTdoNpi1SkwNq40w/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link1.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link1.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso1" onclick="toggleMenu(this)">Matemáticas / EF / Música<br><span class="rea">El despertar de los Cadetes Stealth</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1jlmePMXjLMRidOUGFWmCcf2SzAdsRKvGXqtMIExYY_A/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link1.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link1.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso1" onclick="toggleMenu(this)">Lengua / Inglés / EPV<br><span class="rea">Comic-Tech. La rebelión del grafito</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1-Jqyo_Fg6srcjdMaxZa_BnHy-hxzsRI0rLmWM32xvzU/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link1.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link1.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="curso-section">
-<div class="curso-title">1º ESO</div>
-<div class="button-grid">
-<div>
-<div class="btn eso1" onclick="toggleMenu(this)">ByG / GeH<br><span class="rea">La supervivencia en Terra Nova</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1v4C6S9cPgPegzKQ6ZV23faIpB-wfTdoNpi1SkwNq40w/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link1.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link1.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso1" onclick="toggleMenu(this)">Matemáticas / EF / Música<br><span class="rea">El despertar de los Cadetes Stealth</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1jlmePMXjLMRidOUGFWmCcf2SzAdsRKvGXqtMIExYY_A/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link1.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link1.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso1" onclick="toggleMenu(this)">Lengua / Inglés / EPV<br><span class="rea">Comic-Tech. La rebelión del grafito</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1-Jqyo_Fg6srcjdMaxZa_BnHy-hxzsRI0rLmWM32xvzU/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link1.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link1.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-</div></div>
+        <div class="curso-section">
+            <div class="curso-title">2º ESO</div>
+            <div class="button-grid">
+                <div>
+                    <div class="btn eso2" onclick="toggleMenu(this)">Lengua / Inglés / GeH<br><span class="rea">Sherpa-Bot. El camino de la plata 4.0</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/12vC2_GUv9nEneSgcaUodEMaDearNKgf0tom_m1gFAwY/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link2.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link2.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso2" onclick="toggleMenu(this)">FyQ / Matemáticas<br><span class="rea">Abyss-Zero. Protocolo de emergencia</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1Oc7fJp-9Ma1NFwwg9qNVM1JSzHqqxqpS0nPsRk5G0H4/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link2.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link2.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso2" onclick="toggleMenu(this)">EF / Música / Tecnología<br><span class="rea">Sport-Blind. El sonido del deporte</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1EswvRR9KyaoNzMFGd8OkJLsn5wpdpjWcS7veiF32Y7A/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link2.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link2.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="curso-section">
-<div class="curso-title">2º ESO</div>
-<div class="button-grid">
-<div>
-<div class="btn eso2" onclick="toggleMenu(this)">Lengua / Inglés / GeH<br><span class="rea">Sherpa-Bot. El camino de la plata 4.0</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/12vC2_GUv9nEneSgcaUodEMaDearNKgf0tom_m1gFAwY/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link2.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link2.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso2" onclick="toggleMenu(this)">FyQ / Matemáticas<br><span class="rea">Abyss-Zero. Protocolo de emergencia</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1Oc7fJp-9Ma1NFwwg9qNVM1JSzHqqxqpS0nPsRk5G0H4/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link2.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link2.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso2" onclick="toggleMenu(this)">EF / Música / Tecnología<br><span class="rea">Sport-Blind. El sonido del deporte</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1EswvRR9KyaoNzMFGd8OkJLsn5wpdpjWcS7veiF32Y7A/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link2.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link2.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-</div></div>
+        <div class="curso-section">
+            <div class="curso-title">3º ESO</div>
+            <div class="button-grid">
+                <div>
+                    <div class="btn eso3" onclick="toggleMenu(this)">ByG / FyQ / EF<br><span class="rea">Rescate en las profundidades. Operación cueva oscura</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1tFue2FFpZbpEHOxuvgkIVPPUcxyoGTgSChkVrkm1j0s/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link3.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link3.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso3" onclick="toggleMenu(this)">Matemáticas / EPV / Tecnología<br><span class="rea">Art-Tech museum: El renacimiento del siglo XXI</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1xX5Mmh_8T71q0RLVWb1Gml25pnyTOrAys61RQ3xEhPw/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link3.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link3.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso3" onclick="toggleMenu(this)">Lengua / Inglés / GeH<br><span class="rea">REA – Global Market: El viaje de los productos</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1W2HAIyaUW9tg5lDqgYJPENOVXgECvCyM5H8qdxfLeCg/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link3.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link3.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="curso-section">
-<div class="curso-title">3º ESO</div>
-<div class="button-grid">
-<div>
-<div class="btn eso3" onclick="toggleMenu(this)">ByG / FyQ / EF<br><span class="rea">Rescate en las profundidades. Operación cueva oscura</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1tFue2FFpZbpEHOxuvgkIVPPUcxyoGTgSChkVrkm1j0s/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link3.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link3.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso3" onclick="toggleMenu(this)">Matemáticas / EPV / Tecnología<br><span class="rea">Art-Tech museum: El renacimiento del siglo XXI</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1xX5Mmh_8T71q0RLVWb1Gml25pnyTOrAys61RQ3xEhPw/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link3.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link3.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso3" onclick="toggleMenu(this)">Lengua / Inglés / GeH<br><span class="rea">REA – Global Market: El viaje de los productos</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1W2HAIyaUW9tg5lDqgYJPENOVXgECvCyM5H8qdxfLeCg/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link3.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link3.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-</div></div>
+        <div class="curso-section">
+            <div class="curso-title">4º ESO</div>
+            <div class="button-grid">
+                <div>
+                    <div class="btn eso4" onclick="toggleMenu(this)">Matemáticas B / FyQ / EF<br><span class="rea">Grand Prix 4.0. Escudería Dinoco Racing</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1s5oWjzf9KjBJTEjdOH1y9VDz1dNH43b1R6XgxKaBKLI/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link4.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link4.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso4" onclick="toggleMenu(this)">Matemáticas A / FOPP<br><span class="rea">Tech-Aid: Operación última milla</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1pPSW_4gptDLUi9wN7_L_tB8I35nmTpE1lrJ_sx93SA4/edit" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link4.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link4.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="btn eso4" onclick="toggleMenu(this)">Lengua / Inglés / GeH<br><span class="rea">Time Court: El veredicto de la historia</span></div>
+                    <div class="submenu">
+                        <a href="https://docs.google.com/document/d/1ZIKbEh6725HbcPHjXTLIJD6WsPLoqHfgf8ko9rrgiSY/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
+                        <a id="Link4.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
+                        <a id="Link4.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<div class="curso-section">
-<div class="curso-title">4º ESO</div>
-<div class="button-grid">
-<div>
-<div class="btn eso4" onclick="toggleMenu(this)">Matemáticas B / FyQ / EF<br><span class="rea">Grand Prix 4.0. Escudería Dinoco Racing</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1s5oWjzf9KjBJTEjdOH1y9VDz1dNH43b1R6XgxKaBKLI/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link4.1_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link4.1_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso4" onclick="toggleMenu(this)">Matemáticas A / FOPP<br><span class="rea">Tech-Aid: Operación última milla</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1pPSW_4gptDLUi9wN7_L_tB8I35nmTpE1lrJ_sx93SA4/edit" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link4.2_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link4.2_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-<div>
-<div class="btn eso4" onclick="toggleMenu(this)">Lengua / Inglés / GeH<br><span class="rea">Time Court: El veredicto de la historia</span></div>
-<div class="submenu">
-<a href="https://docs.google.com/document/d/1ZIKbEh6725HbcPHjXTLIJD6WsPLoqHfgf8ko9rrgiSY/edit?usp=sharing" target="_blank" class="sub-btn">Portada y Actividad 1</a>
-<a id="Link4.3_2" href="#" target="_blank" class="sub-btn">Actividad 2</a>
-<a id="Link4.3_3" href="#" target="_blank" class="sub-btn">Actividad 3</a>
-</div>
-</div>
-</div></div>
-
-</div>
-    
+    </div>
 
     <script>
-// URL CSV de Google Sheets
-const csvUrl = '[docs.google.com](https://docs.google.com/spreadsheets/d/1lVVghiouj9yyLtCfd93i8L12-CRNAKhtMsmyUFJYCVM/export?format=csv&gid=0)';
+        // Función para abrir/cerrar menús
+        function toggleMenu(el){
+            document.querySelectorAll('.submenu').forEach(m=> {
+                if(m!==el.nextElementSibling) m.classList.remove('active');
+            });
+            el.nextElementSibling.classList.toggle('active');
+        }
 
-// Parser de CSV que respeta comillas y comas dentro de celdas
-function parseCSV(text) {
-    const rows = [];
-    let row = [];
-    let cell = '';
-    let inQuotes = false;
+        // --- CONFIGURACIÓN DE GOOGLE SHEETS ---
+        const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEY58bKCR8Te2gDvmmS9z-iEYsnAowh0l3tc4Jg2epp-t68w4jKUajy0rB6FRKFIvUAogd4Gkl8od/pub?gid=0&single=true&output=csv';
 
-    for (let i = 0; i < text.length; i++) {
-        const char = text[i];
-        const nextChar = text[i + 1];
-
-        if (char === '"') {
-            if (inQuotes && nextChar === '"') {
-                cell += '"';
-                i++;
-            } else {
-                inQuotes = !inQuotes;
+        // Parser de CSV robusto
+        function parseCSV(text) {
+            const rows = [];
+            let row = [];
+            let cell = '';
+            let inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const char = text[i];
+                const nextChar = text[i + 1];
+                if (char === '"') {
+                    if (inQuotes && nextChar === '"') { cell += '"'; i++; } 
+                    else { inQuotes = !inQuotes; }
+                } else if (char === ',' && !inQuotes) { row.push(cell.trim()); cell = ''; } 
+                else if ((char === '\n' || char === '\r') && !inQuotes) {
+                    if (char === '\r' && nextChar === '\n') i++;
+                    row.push(cell.trim());
+                    if (row.some(c => c !== '')) rows.push(row);
+                    row = []; cell = '';
+                } else { cell += char; }
             }
-        } else if (char === ',' && !inQuotes) {
-            row.push(cell.trim());
-            cell = '';
-        } else if ((char === '\n' || char === '\r') && !inQuotes) {
-            if (char === '\r' && nextChar === '\n') i++;
-            row.push(cell.trim());
-            if (row.some(c => c !== '')) rows.push(row);
-            row = [];
-            cell = '';
-        } else {
-            cell += char;
-        }
-    }
-
-    if (cell.length > 0 || row.length > 0) {
-        row.push(cell.trim());
-        if (row.some(c => c !== '')) rows.push(row);
-    }
-
-    return rows;
-}
-
-// Comprueba si el texto parece una URL válida
-function esUrlValida(texto) {
-    return /^https?:\/\/.+/i.test(texto);
-}
-
-// Leer hoja y actualizar enlaces
-async function cargarEnlacesDesdeGoogleSheets() {
-    try {
-        const respuesta = await fetch(csvUrl, { cache: "no-store" });
-        if (!respuesta.ok) {
-            throw new Error(`Error HTTP: ${respuesta.status}`);
+            if (cell.length > 0 || row.length > 0) {
+                row.push(cell.trim());
+                if (row.some(c => c !== '')) rows.push(row);
+            }
+            return rows;
         }
 
-        const textoCsv = await respuesta.text();
-        const filas = parseCSV(textoCsv);
+        async function cargarEnlacesDesdeGoogleSheets() {
+            console.log("Conectando con Google Sheets...");
+            try {
+                const respuesta = await fetch(csvUrl, { cache: "no-store" });
+                if (!respuesta.ok) throw new Error(`Error: ${respuesta.status}`);
 
-        // Saltamos cabecera
-        for (let i = 1; i < filas.length; i++) {
-            const fila = filas[i];
+                const textoCsv = await respuesta.text();
+                const filas = parseCSV(textoCsv);
 
-            // Esperamos columnas B-F del CSV exportado completo:
-            // A podría existir vacía o con otros datos, así que mejor asegurar por posición real si el CSV contiene todo
-            // Según tu captura:
-            // B = REA
-            // C = Materia
-            // D = N. REA
-            // E = Actividad
-            // F = Link
-            //
-            // En export CSV real, si existe columna A, entonces:
-            // D = índice 3
-            // E = índice 4
-            // F = índice 5
+                // Empezamos en i=1 para saltar la cabecera del Excel
+                for (let i = 1; i < filas.length; i++) {
+                    const fila = filas[i];
+                    if (fila.length < 6) continue;
 
-            if (fila.length < 6) continue;
+                    const nRea = fila[3];      // Columna D (N. REA)
+                    const actividad = fila[4]; // Columna E (Actividad)
+                    const enlace = fila[5];    // Columna F (Link)
 
-            const nRea = (fila[3] || '').trim();
-            const actividad = (fila[4] || '').trim();
-            const enlace = (fila[5] || '').trim();
+                    if (!nRea || !actividad) continue;
 
-            if (!nRea || !actividad || !enlace) continue;
+                    const idBuscado = `Link${nRea.trim()}_${actividad.trim()}`;
+                    const boton = document.getElementById(idBuscado);
 
-            const idEnlaceHtml = `Link${nRea}_${actividad}`;
-            const botonHtml = document.getElementById(idEnlaceHtml);
-
-            if (botonHtml && esUrlValida(enlace)) {
-                botonHtml.href = enlace;
-                botonHtml.target = "_blank";
-                botonHtml.style.pointerEvents = "auto";
-                botonHtml.style.opacity = "1";
+                    // Solo actualiza si el botón existe y el enlace es una URL real
+                    if (boton && enlace && enlace.toLowerCase().startsWith("http")) {
+                        boton.href = enlace.trim();
+                        console.log(`✅ Sincronizado: ${idBuscado}`);
+                    }
+                }
+            } catch (error) {
+                console.error('Error al cargar datos:', error);
             }
         }
-    } catch (error) {
-        console.error('Error al cargar los enlaces desde Google Sheets:', error);
-    }
-}
 
-// Ejecutar al cargar
-cargarEnlacesDesdeGoogleSheets();
-</script>
-
+        // Ejecutar al cargar la página
+        cargarEnlacesDesdeGoogleSheets();
+    </script>
 </body>
 </html>
