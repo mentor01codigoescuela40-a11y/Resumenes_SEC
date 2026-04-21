@@ -23,7 +23,7 @@ h1 { color: #555; margin-bottom: 40px; }
 
 <body>
 
-<h1>RESÚMENES SECUNDARIA.</h1>
+<h1>RESÚMENES SECUNDARIA</h1>
 
 <script>
 function toggleMenu(el){
@@ -154,39 +154,101 @@ function toggleMenu(el){
 
 </div>
     
-    <script>
-// 1. Pega aquí la URL que obtuviste al "Publicar en la web" como CSV
-const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEY58bKCR8Te2gDvmmS9z-iEYsnAowh0l3tc4Jg2epp-t68w4jKUajy0rB6FRKFIvUAogd4Gkl8od/pubhtml';
 
-// 2. Función para leer y actualizar los enlaces
+    <script>
+// URL CSV de Google Sheets
+const csvUrl = '[docs.google.com](https://docs.google.com/spreadsheets/d/1lVVghiouj9yyLtCfd93i8L12-CRNAKhtMsmyUFJYCVM/export?format=csv&gid=0)';
+
+// Parser de CSV que respeta comillas y comas dentro de celdas
+function parseCSV(text) {
+    const rows = [];
+    let row = [];
+    let cell = '';
+    let inQuotes = false;
+
+    for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const nextChar = text[i + 1];
+
+        if (char === '"') {
+            if (inQuotes && nextChar === '"') {
+                cell += '"';
+                i++;
+            } else {
+                inQuotes = !inQuotes;
+            }
+        } else if (char === ',' && !inQuotes) {
+            row.push(cell.trim());
+            cell = '';
+        } else if ((char === '\n' || char === '\r') && !inQuotes) {
+            if (char === '\r' && nextChar === '\n') i++;
+            row.push(cell.trim());
+            if (row.some(c => c !== '')) rows.push(row);
+            row = [];
+            cell = '';
+        } else {
+            cell += char;
+        }
+    }
+
+    if (cell.length > 0 || row.length > 0) {
+        row.push(cell.trim());
+        if (row.some(c => c !== '')) rows.push(row);
+    }
+
+    return rows;
+}
+
+// Comprueba si el texto parece una URL válida
+function esUrlValida(texto) {
+    return /^https?:\/\/.+/i.test(texto);
+}
+
+// Leer hoja y actualizar enlaces
 async function cargarEnlacesDesdeGoogleSheets() {
     try {
-        const respuesta = await fetch(csvUrl);
+        const respuesta = await fetch(csvUrl, { cache: "no-store" });
+        if (!respuesta.ok) {
+            throw new Error(`Error HTTP: ${respuesta.status}`);
+        }
+
         const textoCsv = await respuesta.text();
-        
-        // Separamos el CSV por líneas (cada línea es una fila del excel)
-        const lineas = textoCsv.split('\n');
-        
-        // Empezamos desde i=1 para saltarnos la cabecera (Curso, REA, etc)
-        for (let i = 1; i < lineas.length; i++) {
-            const fila = lineas[i].split(','); // Separamos por columnas
-            if (fila.length < 6) continue; // Si la fila está vacía, la saltamos
-            
-            const nRea = fila[3].trim();        // Columna D (ej: 1.1)
-            const actividad = fila[4].trim();   // Columna E (ej: 2)
-            let enlace = fila[5].trim();        // Columna F (el enlace)
-            
-            // Reconstruimos el ID exacto que le pusimos en el HTML (ej: Link1.1_2)
+        const filas = parseCSV(textoCsv);
+
+        // Saltamos cabecera
+        for (let i = 1; i < filas.length; i++) {
+            const fila = filas[i];
+
+            // Esperamos columnas B-F del CSV exportado completo:
+            // A podría existir vacía o con otros datos, así que mejor asegurar por posición real si el CSV contiene todo
+            // Según tu captura:
+            // B = REA
+            // C = Materia
+            // D = N. REA
+            // E = Actividad
+            // F = Link
+            //
+            // En export CSV real, si existe columna A, entonces:
+            // D = índice 3
+            // E = índice 4
+            // F = índice 5
+
+            if (fila.length < 6) continue;
+
+            const nRea = (fila[3] || '').trim();
+            const actividad = (fila[4] || '').trim();
+            const enlace = (fila[5] || '').trim();
+
+            if (!nRea || !actividad || !enlace) continue;
+
             const idEnlaceHtml = `Link${nRea}_${actividad}`;
-            
-            // Buscamos el botón en el HTML
             const botonHtml = document.getElementById(idEnlaceHtml);
-            
-            // Si el botón existe y el enlace no es un placeholder (no empieza por "Link")
-            if (botonHtml && enlace && !enlace.startsWith("Link")) {
-                // Actualizamos el href con el enlace del Google Sheet
+
+            if (botonHtml && esUrlValida(enlace)) {
                 botonHtml.href = enlace;
-                botonHtml.target = "_blank"; // Para que abra en otra pestaña
+                botonHtml.target = "_blank";
+                botonHtml.style.pointerEvents = "auto";
+                botonHtml.style.opacity = "1";
             }
         }
     } catch (error) {
@@ -194,8 +256,9 @@ async function cargarEnlacesDesdeGoogleSheets() {
     }
 }
 
-// 3. Ejecutar la función nada más cargar la página
+// Ejecutar al cargar
 cargarEnlacesDesdeGoogleSheets();
 </script>
+
 </body>
 </html>
