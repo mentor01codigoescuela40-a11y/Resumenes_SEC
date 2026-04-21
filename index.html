@@ -37,7 +37,7 @@ function toggleMenu(el){
 <div class="container">
 
 <div class="curso-section">
-<div class="curso-title">1º ESO.</div>
+<div class="curso-title">1º ESO</div>
 <div class="button-grid">
 <div>
 <div class="btn eso1" onclick="toggleMenu(this)">ByG / GeH<br><span class="rea">La supervivencia en Terra Nova</span></div>
@@ -153,9 +153,10 @@ function toggleMenu(el){
 </div></div>
 
 </div>
+    
     <script>
 // 1. Pega aquí la URL que obtuviste al "Publicar en la web" como CSV
-const csvUrl = 'AQUÍ_PONES_EL_ENLACE_CSV_DE_GOOGLE';
+const csvUrl = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRMEY58bKCR8Te2gDvmmS9z-iEYsnAowh0l3tc4Jg2epp-t68w4jKUajy0rB6FRKFIvUAogd4Gkl8od/pubhtml';
 
 // 2. Función para leer y actualizar los enlaces
 async function cargarEnlacesDesdeGoogleSheets() {
@@ -196,5 +197,5 @@ async function cargarEnlacesDesdeGoogleSheets() {
 // 3. Ejecutar la función nada más cargar la página
 cargarEnlacesDesdeGoogleSheets();
 </script>
-</body>
+
 </html>
